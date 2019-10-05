@@ -72,6 +72,18 @@ function tableex.map(object, func) -- lume
    return newTable
 end
 
+function tableex.transform(object, func)
+   util.checkType("table", object, "function", func)
+   for k, v in pairs(object) do
+      if type(v) == "table" then
+         object[k] = tableex.transform(v, func)
+      else
+         object[k] = func(v)
+      end
+   end
+   return object
+end
+
 function tableex.invert(object) -- lume
    util.checkType("table", object)
    local newTable = {}
