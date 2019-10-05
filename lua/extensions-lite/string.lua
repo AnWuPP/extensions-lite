@@ -2,7 +2,7 @@
 -- Licensed under the MIT License.
 -- Copyright (c) 2016, BlastHack Team <blast.hk>
 
-local util = require 'extensions.core.util'
+local util = require 'extensions-lite.core.util'
 local stringex = {}
 
 local patternescape = function(str) -- lume for funcs
