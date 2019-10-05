@@ -2,7 +2,7 @@
 -- Licensed under the MIT License.
 -- Copyright (c) 2016, BlastHack Team <blast.hk>
 
-local util = require 'extensions.core.util'
+local util = require 'extensions-lite.core.util'
 local tableex = {}
 
 function tableex.deepcopy(object, mt) -- copy from hz otkuda, nn site
