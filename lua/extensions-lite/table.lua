@@ -54,6 +54,20 @@ function tableex.merge(...)
    for i = 1, len do
       local t = select(i, ...)
       for k, v in pairs(t) do
+         table.insert(newTable, v)
+      end
+   end
+   return newTable
+end
+
+function tableex.assocMerge(...)
+   local len = select('#', ...)
+   assert(len > 1, "impossible to merge less than two tables")
+   util.checkGenType("table", ...)
+   local newTable = {}
+   for i = 1, len do
+      local t = select(i, ...)
+      for k, v in pairs(t) do
          newTable[k] = v
       end
    end
