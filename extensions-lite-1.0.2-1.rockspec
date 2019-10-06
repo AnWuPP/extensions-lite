@@ -1,8 +1,8 @@
 package = "extensions-lite"
-version = "1.0.1-1"
+version = "1.0.2-1"
 source = {
    url = "git+https://github.com/DonHomka/extensions-lite.git",
-   tag = "1.0.1"
+   tag = "1.0.2"
 }
 description = {
    homepage = "https://github.com/DonHomka/extensions-lite",
