@@ -5,10 +5,11 @@
 local util = require 'extensions-lite.core.util'
 local tableex = {}
 
-function tableex.deepcopy(object, mt) -- copy from hz otkuda, nn site
+ -- http://lua-users.org/wiki/CopyTable
+function tableex.deepcopy(object, mt)
    util.checkType("table", object)
    local lookup_table = {}
-   local mt = mt or false
+   mt = mt or false
    local function _copy(object)
          if type(object) ~= "table" then
             return object
@@ -27,8 +28,7 @@ end
 
 function tableex.copy(object, mt)
    util.checkType("table", object)
-   assert(type(object) == "table", ("bad argument #1 to 'copy' (table expected, got %s)"):format(type(object)))
-   local mt = mt or false
+   mt = mt or false
    local newt = {}
    for k, v in pairs(object) do
       newt[k] = v
@@ -47,10 +47,11 @@ function tableex.contains(object, value)
 end
 
 function tableex.merge(...)
-   assert(#{...} > 1, "impossible to merge less than two tables")
+   local len = select('#', ...)
+   assert(len > 1, "impossible to merge less than two tables")
    util.checkGenType("table", ...)
    local newTable = {}
-   for i = 1, #{...} do
+   for i = 1, len do
       local t = select(i, ...)
       for k, v in pairs(t) do
          newTable[k] = v
@@ -96,8 +97,10 @@ function tableex.invert(object) -- lume
  function tableex.keys(object) -- lume
    util.checkType("table", object)
    local newTable = {}
+   local i = 0
    for k in pairs(object) do
-      newTable[#newTable + 1] = k
+      i = i + 1
+      newTable[i] = k
    end
    return newTable
  end
