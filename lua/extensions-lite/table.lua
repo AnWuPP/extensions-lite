@@ -120,7 +120,7 @@ function tableex.invert(object) -- lume
  end
 
  function tableex.getIndexOf(object, value)
-   util.checkType("table", object, "string", value)
+   util.checkType("table", object, "string|number", value)
    for k, v in pairs(object) do
       if v == value then
          return k
